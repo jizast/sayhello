@@ -2,6 +2,13 @@
 {% from 'bootstrap/form.html' import render_form %}
 
 {% block content %}
+    <div class="login-status">
+        {% if username is none %}
+        <i>请登录~</i><a herf="{{ url_for('register') }}">新注册</a>
+        {% else %}
+        <i>{{ username }},您好！</i>
+        {% endif %}
+    </div>
     <div class="hello-form">
         {{ render_form(form, action=request.full_path) }}
     </div>
