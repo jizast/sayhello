@@ -16,3 +16,11 @@ class Message(db.Model):
     name = db.Column(db.String(20))
     body = db.Column(db.String(200))
     timestamp = db.Column(db.DateTime, default=datetime.utcnow, index=True)
+    userid = db.Column(db.Integer, db.ForeignKey('keep_user.id'))
+
+class User(db.Model):
+    __tablename__ = 'keep_user'
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    username = db.Column(db.String(20), unique=True)
+    password = db.Column(db.String(200))
+    Message = db.relationship('Message')
