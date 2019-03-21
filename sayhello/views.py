@@ -37,7 +37,7 @@ def index():
             elif dbpassword.password == passwd:
                 flash('登录成功！')
                 session['logged_in'] = True
-                session['username'], name = urname
+                session['username'], name = urname, urname
                 return redirect(url_for('index'))
             else:
                 flash('密码错误！')
